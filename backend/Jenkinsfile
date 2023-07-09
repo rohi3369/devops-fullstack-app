@@ -1,0 +1,18 @@
+pipeline {
+    agent {label 'npm'}
+
+    stages{
+        stage('clone'){
+            steps{
+                git branch: 'main',
+                url: 'https://github.com/rohi3369/devops-fullstack-app.git'
+            }
+        }
+        stage('backend build'){
+            steps{
+                sh 'cd backend'
+                sh 'go get ./...'
+            }
+        }
+    }
+}

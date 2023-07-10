@@ -1,0 +1,41 @@
+version: "3.17"
+networks:
+    2-tier:
+        driver: bridge
+services:
+    frontend:
+        image: sai3369/frontend:1.0
+        ports:
+            - 3000
+        networks:
+            - 2-tier
+        environment:
+            - API_URL=http://backend:8080
+
+    backend:
+        image: sai3369/backend:1.0
+        ports:
+            - 8080
+        networks:
+            - 2-tier
+        environment:
+            - DB_HOST=localhost
+            - DB_PORT=5432
+            - DB_NAME=postgres
+            - DB_USER=db-user
+            - DB_PASSWORD=postgres-db-password
+            - ALLOWED_ORIGINS=go run main.go
+        depends_on:
+            - db
+
+    db:
+        image: postgres:latest
+        restart: always
+        environment:
+            - POSTGRES_DB=postgres
+            - POSTGRES_USER=db-user
+            - POSTGRES_PASSWORD=postgres-db-password
+        networks:
+            - 2-tier
+        ports:
+            - 5432:5432

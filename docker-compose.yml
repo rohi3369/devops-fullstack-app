@@ -30,7 +30,7 @@ services:
             - DB_NAME:EMS
             - DB_USER:EMS
             - DB_PASSWORD:EMS
-            - ALLOWED_ORIGINS:go run main.go
+            - ALLOWED_ORIGINS:gorunmain.go
         depends_on:
             - db
 

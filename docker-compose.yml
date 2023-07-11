@@ -45,4 +45,4 @@ services:
         networks:
             - 2-tier
         ports:
-            - 5432:5432
+            - 5432

@@ -6,7 +6,7 @@ services:
     frontend:
         build: 
             context: .
-            dockerfile: ./devops-fullstack-app/frontend/Dockerfile
+            dockerfile: ./frontend/Dockerfile
         container_name: EMS-frontend
         ports:
             - 3000:3000
@@ -18,7 +18,7 @@ services:
     backend:
         build: 
             context: .
-            dockerfile: ./devops-fullstack-app/backend/Dockerfile
+            dockerfile: ./backend/Dockerfile
         container_name: EMS-backend
         ports:
             - 8080:8080

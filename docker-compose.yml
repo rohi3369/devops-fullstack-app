@@ -34,7 +34,6 @@ services:
 
     db:
         image: "postgres:9.6-alpine"
-        container_name: EMS-postgres
         restart: always
         environment:
             - POSTGRES_DB:EMS

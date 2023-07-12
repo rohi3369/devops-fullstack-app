@@ -39,14 +39,16 @@ resource "null_resource" "dev_provisioner" {
 provisioner "remote-exec" {
     inline = [
     "sudo apt update" ,
-    "sudo apt install apache2 -y",
-   "echo '<h1> adminpage <h1>' > index.html",
-    "sudo mkdir /var/www/html/admin",
-    "sudo cp index.html  /var/www/html/admin/index.html",
-    "sudo apt update" ,
-   "echo '<h1> orderspage <h1>' > index.html",
-    "sudo mkdir /var/www/html/orders",
-    "sudo cp index.html  /var/www/html/orders/index.html"
+    "curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -",
+    "sudo apt install nodejs -y",
+   "wget -c https://dl.google.com/go/go1.19.linux-amd64.tar.gz -O - ",
+    "sudo tar -C /usr/local -xzf go1.19.linux-amd64.tar.gz",
+    "export PATH=$PATH:/usr/local/go/bin",
+   "source ~/.bash_profile",
+    "sudo apt search golang-go -y",
+   "sudo apt install golang-go -y",
+"curl -fsSL https://get.docker.com -o install-docker.sh"
+"sudo sh install-docker.sh -y"
     ]
   }
 }

@@ -4,5 +4,5 @@ COPY . .
 RUN go mod download
 RUN go get ./... 
 EXPOSE 8080
-CMD ["/app/server"]
+ENTRYPOINT ["go","run","main.go"]
 
